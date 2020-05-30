@@ -4,14 +4,13 @@ public class Bishop extends BasePiece {
 
     public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
 
-        if (startRow == desRow || startColumn == desColumn) //If moved straight
-        {
+        boolean bishopsway = (startRow == desRow || startColumn == desColumn);
 
+        if (bishopsway) //If moved straight
+        {
             strErrorMsg = "Bishop can only move along diagonal lines";
             return false;
-
         }
-
         return checkMoveStraightDiagonal(startRow, startColumn, desRow, desColumn, playerMatrix, false);
 
     }
