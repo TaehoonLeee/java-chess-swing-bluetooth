@@ -109,7 +109,6 @@ public class CellMatrix {
                 System.err.println(" Checked Row   " + r + " Column " + c);
                 if (playerMatrix[r][c] == player && pieceMatrix[r][c] == 5)
                     return c;
-
             }
 
         }
@@ -224,7 +223,7 @@ public class CellMatrix {
         c = kingCol;
         for (int row = kingRow; row > 0; row--) {
             r = row - 1;
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 1 || pieceMatrix[r][c] == 4)) {
+            if (checkingForRockAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -237,7 +236,7 @@ public class CellMatrix {
         c = kingCol;
         for (int row = kingRow; row < 7; row++) {
             r = row + 1;
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 1 || pieceMatrix[r][c] == 4)) {
+            if (checkingForRockAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -250,7 +249,7 @@ public class CellMatrix {
         r = kingRow;
         for (int col = kingCol; col > 0; col--) {
             c = col - 1;
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 1 || pieceMatrix[r][c] == 4)) {
+            if (checkingForRockAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -263,7 +262,7 @@ public class CellMatrix {
         r = kingRow;
         for (int col = kingCol; col < 7; col++) {
             c = col + 1;
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 1 || pieceMatrix[r][c] == 4)) {
+            if (checkingForRockAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -278,7 +277,7 @@ public class CellMatrix {
         r = kingRow - 1;
         c = kingCol - 1;
         while (r >= 0 && c >= 0) {
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 3 || pieceMatrix[r][c] == 4)) {
+            if (checkingForBishopAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -293,7 +292,7 @@ public class CellMatrix {
         r = kingRow - 1;
         c = kingCol + 1;
         while (r >= 0 && c <= 7) {
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 3 || pieceMatrix[r][c] == 4)) {
+            if (checkingForBishopAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -308,7 +307,7 @@ public class CellMatrix {
         r = kingRow + 1;
         c = kingCol - 1;
         while (r <= 7 && c >= 0) {
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 3 || pieceMatrix[r][c] == 4)) {
+            if (checkingForBishopAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -323,7 +322,7 @@ public class CellMatrix {
         r = kingRow + 1;
         c = kingCol + 1;
         while (r <= 7 && c <= 7) {
-            if (r < 8 && c < 8 && r >= 0 && c >= 0 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 3 || pieceMatrix[r][c] == 4)) {
+            if (checkingForBishopAndQueen(prePlayer)) {
                 return false;
             }
             if (pieceMatrix[r][c] != 6) {
@@ -389,5 +388,13 @@ public class CellMatrix {
 
         return true;
 
+    }
+
+    private boolean checkingForRockAndQueen(int prePlayer) {
+        return r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 1 || pieceMatrix[r][c] == 4);
+    }
+
+    private boolean checkingForBishopAndQueen(int prePlayer) {
+        return r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && (pieceMatrix[r][c] == 3 || pieceMatrix[r][c] == 4);
     }
 }
