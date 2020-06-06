@@ -1,6 +1,7 @@
 package chess;
 
 enum Direction {NORTH, SOUTH, WEST, EAST, NORTHWEST, NORTHEAST, SOUTHWEST, SOUTHEAST, DIAGOANL}
+
 /*********
  * class which contains a function checkMoveStraightDiagonal() which has shared (protected) variables
  * finalDesRow, finalDesColumn & strErrorMsg
@@ -11,6 +12,7 @@ abstract class BasePiece {
     protected int finalDesRow = 0;
     protected int finalDesColumn = 0;
     protected String strErrorMsg = "";
+    protected LegalMove legalMove;
     //Method for checking the path to the destination and making sure nothing is in the way
 
     protected boolean checkStraightMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {

@@ -42,12 +42,12 @@ public class WindowChessGameBT extends ChessBoard implements MouseListener, Mous
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
 
-        pawnObject = new Pawn();
-        rockObject = new Rock();
-        knightObject = new Knight();
-        bishopObject = new Bishop();
+        pawnObject = new Pawn(new PawnLegalMove());
+        rockObject = new Rock(new RockLegalMove());
+        knightObject = new Knight(new KnightLegalMove());
+        bishopObject = new Bishop(new BishopLegalMove());
         queenObject = new Queen();
-        kingObject = new King();
+        kingObject = new King(new KingLegalMove());
         btcomm = new BtCommunication();
     }
 
