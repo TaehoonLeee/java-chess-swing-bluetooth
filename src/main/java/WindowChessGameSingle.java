@@ -21,12 +21,12 @@ public class WindowChessGameSingle extends ChessBoard implements MouseListener, 
     private int currentY = 0;
     private int refreshCounter = 0;
     private boolean firstTime = true, hasWon = false, isDragging = false, kingSafe, drag = false;
-    private final Pawn pawnObject = new Pawn(new PawnLegalMove());
-    private final Rock rockObject = new Rock(new RockLegalMove());
-    private final Knight knightObject = new Knight(new KnightLegalMove());
-    private final Bishop bishopObject = new Bishop(new BishopLegalMove());
+    private final Pawn pawnObject = new Pawn();
+    private final Rock rockObject = new Rock();
+    private final Knight knightObject = new Knight();
+    private final Bishop bishopObject = new Bishop();
     private final Queen queenObject = new Queen();
-    private final King kingObject = new King(new KingLegalMove());
+    private final King kingObject = new King();
     private int kr, kc;
     private int pplayer = 1, ppiece = 1;
     private int moveCount = 0;
