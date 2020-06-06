@@ -1,8 +1,8 @@
 import javax.swing.*;
+import java.awt.*;
 
 //main class
 public class Main extends JFrame {
-
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 

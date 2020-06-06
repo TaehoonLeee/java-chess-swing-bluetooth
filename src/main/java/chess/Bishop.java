@@ -12,7 +12,6 @@ public class Bishop extends BasePiece {
 
         }
 
-        return checkMoveStraightDiagonal(startRow, startColumn, desRow, desColumn, playerMatrix, false);
-
+        return checkDiagonalMove(startRow, startColumn, desRow, desColumn, playerMatrix);
     }
 }
