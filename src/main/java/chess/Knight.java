@@ -10,31 +10,31 @@ public class Knight extends BasePiece {
 
         int n=0;
 
-        boolean twoNoneE = (desRow == (startRow - 2) && desColumn == (startColumn - 1));
-        boolean twoNoneW = (desRow == (startRow - 2) && desColumn == (startColumn + 1));
-        boolean twoSoneE = (desRow == (startRow + 2) && desColumn == (startColumn - 1));
-        boolean twoSoneW = (desRow == (startRow + 2) && desColumn == (startColumn + 1));
-        boolean oneNtwoE = (desRow == (startRow - 1) && desColumn == (startColumn - 2));
-        boolean oneNtwoW = (desRow == (startRow - 1) && desColumn == (startColumn + 2));
-        boolean oneStwoE = (desRow == (startRow + 1) && desColumn == (startColumn - 2));
-        boolean oneStwoW = (desRow == (startRow + 1) && desColumn == (startColumn + 2));
+        boolean Knight2N1E = (desRow == (startRow - 2) && desColumn == (startColumn - 1));
+        boolean Knight2N1W = (desRow == (startRow - 2) && desColumn == (startColumn + 1));
+        boolean Knight2S1E = (desRow == (startRow + 2) && desColumn == (startColumn - 1));
+        boolean Knight2S1W = (desRow == (startRow + 2) && desColumn == (startColumn + 1));
+        boolean Knight1N2E = (desRow == (startRow - 1) && desColumn == (startColumn - 2));
+        boolean Knight1N2W = (desRow == (startRow - 1) && desColumn == (startColumn + 2));
+        boolean Knight1S2E = (desRow == (startRow + 1) && desColumn == (startColumn - 2));
+        boolean Knight1S2W = (desRow == (startRow + 1) && desColumn == (startColumn + 2));
 
 
-        if (twoNoneE) //2N, 1E
+        if (Knight2N1E) //2N, 1E
             return true;
-        else if (twoNoneW) //2N, 1W
+        else if (Knight2N1W) //2N, 1W
             return true;
-        else if (twoSoneE) //2S, 1E
+        else if (Knight2S1E) //2S, 1E
             return true;
-        else if (twoSoneW) //2S, 1W
+        else if (Knight2S1W) //2S, 1W
             return true;
-        else if (oneNtwoE) //1N, 2E
+        else if (Knight1N2E) //1N, 2E
             return true;
-        else if (oneNtwoW) //1N, 2W
+        else if (Knight1N2W) //1N, 2W
             return true;
-        else if (oneStwoE) //1S, 2E
+        else if (Knight1S2E) //1S, 2E
             return true;
-        else if (oneStwoW) //1S, 2W
+        else if (Knight1S2W) //1S, 2W
             return true;
         return false;
 

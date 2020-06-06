@@ -4,8 +4,8 @@ public class Rock extends BasePiece {
 
     public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
 
-        boolean diagonalway=startRow != desRow && startColumn != desColumn;
-        if (diagonalway) //If moved diagonal
+        boolean RockDiagonalWay=startRow != desRow && startColumn != desColumn;
+        if (RockDiagonalWay) //If moved diagonal
         {
 
             strErrorMsg = "Rock can only move Horiztonal or Vertical";

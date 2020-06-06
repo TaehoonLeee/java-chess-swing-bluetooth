@@ -7,30 +7,30 @@ public class King extends BasePiece {
         finalDesRow = desRow;
         finalDesColumn = desColumn;
 
-        boolean S = (desRow == (startRow + 1) && desColumn == startColumn);
-        boolean SW = (desRow == (startRow + 1) && desColumn == (startColumn - 1));
-        boolean W = (desRow == startRow && desColumn == startColumn - 1);
-        boolean NW = (desRow == (startRow - 1) && desColumn == (startColumn - 1));
-        boolean N = (desRow == (startRow - 1) && desColumn == startColumn);
-        boolean NE = (desRow == (startRow - 1) && desColumn == (startColumn + 1));
-        boolean E = (desRow == startRow && desColumn == (startColumn + 1));
-        boolean SE = (desRow == (startRow + 1) && desColumn == (startColumn + 1));
+        boolean KingS = (desRow == (startRow + 1) && desColumn == startColumn);
+        boolean KingSW = (desRow == (startRow + 1) && desColumn == (startColumn - 1));
+        boolean KingW = (desRow == startRow && desColumn == startColumn - 1);
+        boolean KingNW = (desRow == (startRow - 1) && desColumn == (startColumn - 1));
+        boolean KingN = (desRow == (startRow - 1) && desColumn == startColumn);
+        boolean KingNE = (desRow == (startRow - 1) && desColumn == (startColumn + 1));
+        boolean KingE = (desRow == startRow && desColumn == (startColumn + 1));
+        boolean KingSE = (desRow == (startRow + 1) && desColumn == (startColumn + 1));
 
-        if (S) //S
+        if (KingS) //S
             return true;
-        else if (SW) //SW
+        else if (KingSW) //SW
             return true;
-        else if (W) //W
+        else if (KingW) //W
             return true;
-        else if (NW) //NW
+        else if (KingNW) //NW
             return true;
-        else if (N) //N
+        else if (KingN) //N
             return true;
-        else if (NE) //NE
+        else if (KingNE) //NE
             return true;
-        else if (E) //E
+        else if (KingE) //E
             return true;
-        else if (SE) //SE
+        else if (KingSE) //SE
             return true;
         else {
             strErrorMsg = "King can only move one space in any direction";
