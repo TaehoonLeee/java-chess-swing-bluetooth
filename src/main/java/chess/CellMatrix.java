@@ -134,29 +134,29 @@ public class CellMatrix {
             r = kingRow - 1;
             c = kingCol - 1;
             //System.err.println(" Checked Row   "+r+" Column "+c);
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 0) {
+            if (checkingForPawn(prePlayer)) {
                 return false;
             }
             r = kingRow - 1;
             c = kingCol + 1;
             //System.err.println(" Checked Row   "+r+" Column "+c);
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 0) {
+            if (checkingForPawn(prePlayer)) {
                 return false;
             }
-        } else {
+        }
+        else {
             r = kingRow + 1;
             c = kingCol - 1;
             //System.err.println(" Checked Row   "+r+" Column "+c);
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 0) {
+            if (checkingForPawn(prePlayer)) {
                 return false;
             }
             r = kingRow + 1;
             c = kingCol + 1;
             //System.err.println(" Checked Row   "+r+" Column "+c);
-            if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 0) {
+            if (checkingForPawn(prePlayer)) {
                 return false;
             }
-
         }
         System.err.println("pawn is checked");
 
@@ -164,59 +164,58 @@ public class CellMatrix {
         r = kingRow - 2;
         c = kingCol - 1;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
 
         r = kingRow - 2;
         c = kingCol + 1;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
 
         r = kingRow + 2;
         c = kingCol - 1;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
 
         r = kingRow + 2;
         c = kingCol + 1;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
 
         r = kingRow - 1;
         c = kingCol - 2;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
 
         r = kingRow - 1;
         c = kingCol + 2;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
 
         r = kingRow + 1;
         c = kingCol - 2;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
 
         r = kingRow + 1;
         c = kingCol + 2;
         //System.err.println(" Checked Row   "+r+" Column "+c);
-        if (r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 2) {
+        if (checkingForNight(prePlayer)) {
             return false;
         }
-
         System.err.println("knight is checked");
 
         //check for rook and queen in north
@@ -338,30 +337,22 @@ public class CellMatrix {
     }
 
     public void printPlayerCell() {
-        for (int row = 0; row < 8; row++) {
-
-            for (int column = 0; column < 8; column++) {
-
-                System.err.print(playerMatrix[row][column] + "\t");
-
-            }
-            System.err.print("\n");
-
-        }
+        printCell(playerMatrix);
     }
 
     public void printPieceCell() {
-        for (int row = 0; row < 8; row++) {
+        printCell(pieceMatrix);
+    }
 
-            for (int column = 0; column < 8; column++) {
-
-                System.err.print(pieceMatrix[row][column] + "\t");
-
+    private void printCell(int[][] matrix) {
+        for(int row = 0; row < 8; row++) {
+            for(int column = 0; column < 8; column++) {
+                System.err.print(matrix[row][column] + "\t");
             }
             System.err.print("\n");
-
         }
     }
+
 
     public boolean checkWinner(int currentPlayer) {
 
@@ -387,7 +378,14 @@ public class CellMatrix {
         }
 
         return true;
+    }
 
+    private boolean checkingForNight(int prePlayer) {
+        return r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 0;
+    }
+
+    private boolean checkingForPawn(int prePlayer) {
+        return r >= 0 && c >= 0 && r <= 7 && c <= 7 && playerMatrix[r][c] == prePlayer && pieceMatrix[r][c] == 0;
     }
 
     private boolean checkingForRockAndQueen(int prePlayer) {

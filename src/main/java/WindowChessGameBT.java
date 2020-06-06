@@ -1,4 +1,3 @@
-
 import bluetooth.BtCommunication;
 import chess.*;
 
