@@ -2,12 +2,12 @@ package chess;
 
 public class KnightLegalMove implements LegalMove {
     @Override
-    public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
+    public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix, int currentPlayer) {
         return false;
     }
 
     @Override
-    public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix, int currentPlayer) {
+    public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
         boolean Knight2N1E = (desRow == (startRow - 2) && desColumn == (startColumn - 1));
         boolean Knight2N1W = (desRow == (startRow - 2) && desColumn == (startColumn + 1));
         boolean Knight2S1E = (desRow == (startRow + 2) && desColumn == (startColumn - 1));

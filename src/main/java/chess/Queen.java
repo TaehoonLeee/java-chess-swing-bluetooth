@@ -2,6 +2,10 @@ package chess;
 
 public class Queen extends BasePiece {
 
+    public Queen() {
+        super();
+    }
+
     public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
 
         boolean axis;

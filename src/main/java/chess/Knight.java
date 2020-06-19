@@ -3,7 +3,7 @@ package chess;
 public class Knight extends BasePiece {
 
     public Knight(LegalMove _legalMove) {
-        this.legalMove = _legalMove;
+        super(_legalMove);
     }
 
     public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
@@ -18,6 +18,10 @@ public class Knight extends BasePiece {
         }
 
         return false;
+    }
+
+    public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix, int currentPlayer) {
+        return legalMove.legalMove(startRow, startColumn, desRow, desColumn, playerMatrix, currentPlayer);
     }
 
 }

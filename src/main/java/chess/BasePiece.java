@@ -15,8 +15,15 @@ abstract class BasePiece {
     protected LegalMove legalMove;
     //Method for checking the path to the destination and making sure nothing is in the way
 
-    protected boolean checkStraightMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
+    public BasePiece() {
+        legalMove = null;
+    }
 
+    public BasePiece(LegalMove _legalMove) {
+        this.legalMove = _legalMove;
+    }
+
+    protected boolean checkStraightMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
         //Moving along a straight axis (rock, queen)
         Direction direction = getDirection(startRow, startColumn, desRow, desColumn);
 
@@ -30,7 +37,6 @@ abstract class BasePiece {
                 }
                 break;
             }
-
             case SOUTH : {
                 for (int newRow = (startRow + 1); newRow < desRow; newRow++) {
                     if (checkAxisMove(newRow, desColumn, playerMatrix)) {
@@ -39,7 +45,6 @@ abstract class BasePiece {
                 }
                 break;
             }
-
             case WEST : {
                 for (int newColumn = (startColumn - 1); newColumn > desColumn; newColumn--) {
                     if (checkAxisMove(desRow, newColumn, playerMatrix)) {
@@ -48,7 +53,6 @@ abstract class BasePiece {
                 }
                 break;
             }
-
             case EAST : {
                 for (int newColumn = (startColumn + 1); newColumn < desColumn; newColumn++) {
                     if (checkAxisMove(desRow, newColumn, playerMatrix)) {
@@ -57,13 +61,11 @@ abstract class BasePiece {
                 }
                 break;
             }
-
             case DIAGOANL : {
                 strErrorMsg = "";
                 return false;
             }
         }
-
         finalDesRow = desRow;
         finalDesColumn = desColumn;
 
@@ -72,62 +74,52 @@ abstract class BasePiece {
 
     protected boolean checkDiagonalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
     //Moving diagonal (bishop/queen)
-        strErrorMsg = "The destination is not on the same diagonal line"; //Default error message
+        strErrorMsg = "The destination is not on the same diagonal line";
         int newColumn;
-
         Direction direction = getDirection(startRow, startColumn, desRow, desColumn);
 
         switch(direction) {
             case NORTHWEST : {
                 for (int newRow = (startRow - 1); newRow > desRow; newRow--) {
                     newColumn = startColumn - (startRow - newRow);
-
                     if (checkAxisMove(newRow, newColumn, playerMatrix)) {
                         return false;
                     }
                 }
                 break;
             }
-
             case NORTHEAST : {
                 for (int newRow = (startRow - 1); newRow > desRow; newRow--) {
                     newColumn = startColumn + (startRow - newRow);
-
                     if (checkAxisMove(newRow, newColumn, playerMatrix)) {
                         return false;
                     }
                 }
                 break;
             }
-
             case SOUTHWEST : {
                 for (int newRow = (startRow + 1); newRow < desRow; newRow++) {
                     newColumn = startColumn - (newRow - startRow);
-
                     if (checkAxisMove(newRow, newColumn, playerMatrix)) {
                         return false;
                     }
                 }
                 break;
             }
-
             case SOUTHEAST : {
                 for (int newRow = (startRow + 1); newRow < desRow; newRow++) {
                     newColumn = startColumn + (newRow - startRow);
-
                     if (checkAxisMove(newRow, newColumn, playerMatrix)) {
                         return false;
                     }
                 }
                 break;
             }
-
             case DIAGOANL: {
                 strErrorMsg = "";
                 return false;
             }
         }
-
          return true;
     }
 
@@ -140,18 +132,18 @@ abstract class BasePiece {
         }
         else if( (startColumn != desColumn) && (startRow == desRow) ){
             if (desColumn < startColumn) direction = Direction.WEST;
-            else direction = Direction.SOUTH;
+            else direction = Direction.EAST;
         }
         else if( ((desRow < startRow) && (desColumn < startColumn)) && ((desRow - startRow) == (desColumn - startColumn)) ) {
             direction = Direction.NORTHWEST;
         }
-        else if( ((desRow < startRow) && (desColumn < startColumn)) && ((desRow - startRow) == (startColumn - desColumn)) ) {
+        else if( ((desRow < startRow) && (desColumn > startColumn)) && ((desRow - startRow) == (startColumn - desColumn)) ) {
             direction = Direction.NORTHEAST;
         }
-        else if( ((desRow < startRow) && (desColumn < startColumn)) && ((startRow - desRow) == (desColumn - startColumn)) ) {
+        else if( ((desRow > startRow) && (desColumn < startColumn)) && ((startRow - desRow) == (desColumn - startColumn)) ) {
             direction = Direction.SOUTHWEST;
         }
-        else if( ((desRow < startRow) && (desColumn < startColumn)) && ((startRow - desRow) == (startColumn - desColumn)) ) {
+        else if( ((desRow > startRow) && (desColumn > startColumn)) && ((startRow - desRow) == (startColumn - desColumn)) ) {
             direction = Direction.SOUTHEAST;
         }
         else direction = Direction.DIAGOANL;

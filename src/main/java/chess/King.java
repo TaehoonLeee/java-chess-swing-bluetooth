@@ -3,7 +3,7 @@ package chess;
 public class King extends BasePiece {
 
     public King(LegalMove _legalMove) {
-        legalMove = _legalMove;
+        super(_legalMove);
     }
 
     public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
@@ -16,7 +16,11 @@ public class King extends BasePiece {
         else {
             strErrorMsg = "King can only move one space in any direction";
 
-            return true;
+            return false;
         }
+    }
+
+    public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix, int currentPlayer) {
+        return legalMove.legalMove(startRow, startColumn, desRow, desColumn, playerMatrix, currentPlayer);
     }
 }
