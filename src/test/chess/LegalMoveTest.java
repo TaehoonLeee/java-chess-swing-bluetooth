@@ -79,6 +79,27 @@ public class LegalMoveTest {
 
     @Test
     public void PawnLegalMoveTest() {
+        assertFalse(pawn.legalMove(0,0,0,0,playerMatrix));
+        assertFalse(pawn.legalMove(0,0,1,1,playerMatrix));
+        assertFalse(pawn.legalMove(0,0,1,2,playerMatrix));
+        assertFalse(pawn.legalMove(0,0,1,0,playerMatrix));
+
+        assertFalse(pawn.legalMove(0,0,0,0,playerMatrix,1));
+        assertFalse(pawn.legalMove(0,0,3,3,playerMatrix,1));
+
+        assertTrue(pawn.legalMove(2,2,1,2,playerMatrix,1));
+
+        playerMatrix[1][2] = 1;
+        assertFalse(pawn.legalMove(2,2,1,2,playerMatrix,1));
+        assertFalse(pawn.legalMove(2, 2, 1, 1, playerMatrix, 1));
+        assertFalse(pawn.legalMove(2, 0, 2, 1, playerMatrix, 1));
+        assertFalse(pawn.legalMove(2, 2, 2, 1, playerMatrix, 1));
+
+        assertFalse(pawn.legalMove(3,2,1,2,playerMatrix,1));
+        assertFalse(pawn.legalMove(3,2,4,1,playerMatrix,2));
+
+        assertFalse(pawn.legalMove(2,2,1,1,playerMatrix,1));
+        assertFalse(pawn.legalMove(3,4,5,2,playerMatrix,2));
 
     }
 

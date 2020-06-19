@@ -18,4 +18,8 @@ public class Pawn extends BasePiece {
             return true;
         }
     }
+
+    public boolean legalMove(int startRow, int startColumn, int desRow, int desColumn, int[][] playerMatrix) {
+        return legalMove.legalMove(startRow, startColumn, desRow, desColumn, playerMatrix);
+    }
 }	
